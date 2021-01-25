@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
+
+    <title>Employee</title>
+    <style>
+        body{
+            background-image: url('download.jpg');
+            background-repeat: no-repeat;
+            background-size:  cover;
+        }
+        .heading {
+            text-align: center;
+            margin: 0 auto;
+            margin: 2%;
+            padding: 2%;
+            color: white;
+            background-color: #0077b6;
+        }
+
+        .sub-heading {
+            text-align: center;
+            margin-top: 2%;
+            margin-left: 2%;
+            margin-right: 2%;
+            margin-bottom: 2%;
+            padding: 1%;
+            color: white;
+            background-color: #0077b6;
+            font-size: 33px;
+        }
+
+        .card {
+            margin: 0 auto;
+            width: 50%;
+        }
+
+        .card-header {
+            text-align: center;
+            font-size: 28px;
+            background-color: #0077b6;
+            color: white;
+        }
+
+        .card-body {
+            text-align: center;
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+
+        h5 {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mx-auto flex items-center justify-between">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item ml-6">
+                        <a class="nav-link active" aria-current="page" href="/adminDashboard">Home</a>
+                    </li>
+                    <% if(!user){ %>
+                        <li class="ml-6 nav-item">
+                            <a class="nav-link" href="/employeeLogin">Login</a>
+                        </li>
+                        <% }else{ %>
+                            <li class="ml-6 nav-item">
+                                <a class="nav-link" href="/addDepartment">Add Department</a>
+                            </li>
+                            <li class="ml-6 nav-item">
+                                <a class="nav-link" href="/addEmployee">Add Employee</a>
+                            </li>
+                            <li class="ml-6 nav-item">
+                                <a class="nav-link" href="/requestedAppointment">Requested Appointment</a>
+                            </li>
+                            <li class="ml-6 nav-item">
+                                <a class="nav-link" href="/confirmedAppointment">Confirmed Appointment</a>
+                              </li>
+                              <li class="ml-6 nav-item">
+                                <a class="nav-link" href="/pastAppointment">Past Appointment</a>
+                              </li>
+                            <li class="ml-6 nav-item">
+                                <form action="/adminLogout" method="POST" id="logout"></form>
+                                <a class="nav-link" onclick="document.getElementById('logout').submit()"
+                                    href="#">Logout</a>
+                                </form>
+                            </li>
+                            <% } %>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="heading">
+        <h1><b>
+                <%= hospital.name %>
+            </b></h1>
+    </div>
+    <div class="sub-heading">
+        <p><b>Our Departments</b></p>
+    </div>
+    <% (hospital.departments).forEach((department)=>{ %>
+        <div class="card">
+            <h3 class="card-header">
+                <%= department.name %>
+            </h3>
+            <div class="card-body">
+                <h5 class="card-title">Add new doctors here</h5>
+
+                <form class="form3" action="/addDoctor0" method="POST">
+                    <input type="hidden" name="department" value="<%= department.name %>">
+                    <button class="btn btn-outline-primary" type="submit" style="margin-top:1%; margin-bottom: 3%;">Add Doctors</button>
+
+                </form>
+                <h5 class="card-title">View all the doctors here</h5>
+
+                <form class="form9" action="/viewDoctor" method="POST">
+                    <input type="hidden" name="department" value="<%= department.name %>">
+                    <button class="btn btn-outline-primary" type="submit" style="margin-top:1%; margin-bottom: 3%;">View Doctors</button>
+                </form>
+            </div>
+        </div>
+        <% }) %>
+</body>
+
+</html>

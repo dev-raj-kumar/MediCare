@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>About Us</title>
+    <style>
+    .h1{
+      width: 400px;
+      background-color: #0077b6;
+      color: white;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 50px;
+      margin-top: 2%;
+      margin-bottom: 2%;
+    }
+    .para{
+      width: 1000px;
+      margin: 0 auto;
+      font-size: 1.4vw;
+      color: #004d80;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+    .link{
+      margin: 0 auto;
+      text-align: center;
+      background-color: #e6faff;
+      text-color: white;
+      font-size:30px;
+      width: 50%;
+      margin-top: 2%;
+    }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mx-auto flex items-center justify-between">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item ml-6">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <% if(!user){ %>
+                        <li class="ml-6 nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                        <li class="ml-6 nav-item">
+                            <a class="nav-link" href="/register">Register</a>
+                        </li>
+                        <li class="ml-6 nav-item">
+                          <a class="nav-link" href="/employeeLogin">Hospital Login</a>
+                      </li>
+                    <% }else{ %>
+                        <li class="ml-6 nav-item">
+                            <form action="/logout" method="POST" id="logout"></form>
+                            <a class="nav-link" onclick="document.getElementById('logout').submit()" href="#">Logout</a>
+                            </form>
+                        </li>
+                        <li class="ml-6 nav-item">
+                            <a class="nav-link" href="/userAppointments">My Appointments</a>
+                        </li>
+                    <% } %>
+                    <li class="nav-item ml-6">
+                        <a class="nav-link" href="/about">About Us</a>
+                    </li>
+                    <li class="nav-item ml-6">
+                        <a class="nav-link" href="#">Hospitals</a>
+                    </li>
+                    <li class="nav-item ml-6">
+                        <a class="nav-link" href="#">Covid Section</a>
+                    </li>
+                    <li class="nav-item ml-6">
+                        <a class="nav-link" href="#">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <h1 class="h1">About Medicare</h1>
+    <div class="para">
+      <p>Majority of hospitals in rural areas and towns or even in some cities don't have their own website and do not provide with services
+        like online appointment booking.</p>
+      <p>Despite of an increase in number of smart phone users in India in last few years, patients have to
+         wait in queues in clinics simply because the digital growth is not channelized.</p>
+      <p>Keeping this in mind, we have come with a project called 'Medicare' that aims at digitalization of small hospitals and clinics.</p>
+      <p>We provide details of various hospitals, their doctors, fee structure, lab test facilities, etc so that users can compare
+         between various options and choose the one that serves them the best.</p>
+      <p>Our key features include appointment booking and lab test booking. By this features we aim to help clinics and hospitals
+         that have not gone digital yet and connect with patients more effectively.</p>
+      <p>We aim to work with as many hospitals possible and benefit as many users as we can.</p>
+      <p>Our team is keen towards providing users with their best experience.</p>
+    </div>
+    <div class="link">
+      <a href="/">LEARN HOW WE CAN HELP YOU TODAY→</a>
+    </div>
+  </body>
+</html>
